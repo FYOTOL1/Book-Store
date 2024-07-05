@@ -21,7 +21,7 @@ app.use("/books", booksRoute);
 app.listen(PORT, () => {
   console.log("Connected PORT");
   mongoose
-    .connect(MongoURL)
+    .connect(MongoURL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
       console.log("Connected DB");
     })
