@@ -18,13 +18,14 @@ app.use(
 // Routes
 app.use("/books", booksRoute);
 
-mongoose
-  .connect(MongoURL)
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log("Running");
+app.listen(PORT, () => {
+  console.log("Connected PORT");
+  mongoose
+    .connect(MongoURL)
+    .then(() => {
+      console.log("Connected DB");
+    })
+    .catch((err) => {
+      console.log(err.message);
     });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+});
